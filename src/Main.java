@@ -1,9 +1,11 @@
 
+import java.util.Scanner;
 
 public class Main {
 
 	public static void main(String[] args) {
 		MyChain chain = null;
+		Scanner scanner = new Scanner(System.in);
 		
 		while (true) {
 			System.out.println("1. Shineer holboost jagsaalt uusgeh");
@@ -13,8 +15,57 @@ public class Main {
 			System.out.println("5. Holboost jagsaalt deer oor engiin jagsaalt zalgah");
 			System.out.println("6. Holboost jagsaalt bolon oor holboost jagsaaltiin negdliig oloh");
 			System.out.println("7. Holboost jagsaal bolon oor holboost jagsaaltiin ogtloltsliig oloh");
-			break;
+			System.out.println("8. Duusgah");
+			System.out.println("9. Holboost jagsaalt hevleh");
+			
+			int songolt = scanner.nextInt();
+			
+			if (songolt == 1) {
+				chain = new MyChain();
+				System.out.println("Holboost jagsaalt uusgelee.");
+			} else if (songolt == 2) {
+				if (chain != null) {
+					System.out.println("MyChain: " + chain.toString());
+					System.out.println("Ymar element heddugeer indexd nemeh ve");
+					int element = scanner.nextInt();
+					int index = scanner.nextInt();
+					chain.add(index, element);
+					System.out.println("Holboost jagsaaltad element nemsen.");
+				} else {
+					System.out.println("Holboost jagsaalt uuseegui baina.");
+				}
+			} else if (songolt == 3) {
+				if (chain != null) {
+					System.out.println("MyChain: " + chain.toString());
+					System.out.println("Heddugeer index iin elementiig ustgah ve");
+					int index = scanner.nextInt();
+					chain.remove(index);
+					System.out.println("Holboost jagsaaltaas element hassan");
+				} else {
+					System.out.println("Holboost jagsaalt uuseegui baina.");
+				}
+			} else if (songolt == 4) {
+				
+			} else if (songolt == 5) {
+				
+			} else if (songolt == 6) {
+				
+			} else if (songolt == 7) {
+				
+			} else if (songolt == 8) {
+				break;
+			} else if (songolt == 9) {
+				if (chain != null) {
+					System.out.println("MyChain: " + chain.toString());
+				} else {
+					System.out.println("Holboost jagsaalt uuseegui baina.");
+				}
+			} else {
+				System.out.println("Buruu utga oruulsan baina.");
+			}
+			
 		}
+		scanner.close();
 	}
 
 }
