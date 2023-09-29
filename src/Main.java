@@ -108,7 +108,17 @@ public class Main {
 							break;
 						}
 					}
-					intersectedChain = chain.intersection(newChain);
+					System.out.println("1. Brute Force");
+					System.out.println("2. Sorted");
+					int approach = scanner.nextInt();
+					if (approach == 1) {
+						intersectedChain = chain.intersection(newChain);
+					} else if (approach == 2) {
+						intersectedChain = chain.intersectionByMergeSorting(newChain);
+					} else {
+						System.out.println("Buruu utga oruulsan baina.");
+					}
+					
 					System.out.println("Shine holboost jagsaaltiin undsen jagsaalttai ogtloltsoh elementtin jagsaalt: " + intersectedChain.toString());
 				} else {
 					System.out.println("Holboost jagsaalt uuseegui baina.");
@@ -122,7 +132,40 @@ public class Main {
 				} else {
 					System.out.println("Holboost jagsaalt uuseegui baina.");
 				}
-			} else {
+			} else if (songolt == 10) {
+				MyChain firstChain = new MyChain();
+				MyChain secondChain = new MyChain();
+				
+				for (int i = 0; i < 1000; i++) {
+					firstChain.add(0, (Object) (int) (Math.random() * 10));
+					secondChain.add(0, (Object) (int) (Math.random() * 10));
+				}
+				
+				
+				long bruteForceStartTime = System.nanoTime();
+				
+				MyChain bruteForceResult = firstChain.intersection(secondChain);
+				
+				long bruteForceEndTime = System.nanoTime();
+				
+				long bruteForceElapsedTime = bruteForceEndTime - bruteForceStartTime;
+		        double bruteForceSeconds = (double) bruteForceElapsedTime / 1_000_000_000.0;
+		        
+		        long mergeSortStartTime = System.nanoTime();
+		        
+		        MyChain mergeSortResult = firstChain.intersectionByMergeSorting(secondChain);
+		        
+		        long mergeSortEndTime = System.nanoTime();
+		        
+		        long mergeSortElapsedTime = mergeSortEndTime - mergeSortStartTime;
+		        double mergeSortSeconds = (double) mergeSortElapsedTime / 1_000_000_000.0;
+		        
+		        
+		        System.out.println("BruteForce: " + bruteForceSeconds);
+		        System.out.println("MergeSort: " + mergeSortSeconds);
+				
+			}
+			else {
 				System.out.println("Buruu utga oruulsan baina.");
 			}
 			
